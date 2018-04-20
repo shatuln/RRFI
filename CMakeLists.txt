@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.5)
+project(RRS_Clion)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(RRS_Clion main.cpp ETSI_RRS_SpectrumControlServices.cpp ETSI_RRS_SpectrumControlServices.h ETSI_RRS_PowerControlServices.cpp ETSI_RRS_PowerControlServices.h ETSI_RRS_AntennaManagementServices.cpp ETSI_RRS_AntennaManagementServices.h ETSI_RRS_RRFI.cpp ETSI_RRS_RRFI.h ETSI_RRS_TxRxChainControlServices.cpp ETSI_RRS_TxRxChainControlServices.h)
