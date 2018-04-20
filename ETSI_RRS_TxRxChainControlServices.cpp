@@ -5,12 +5,14 @@
 #include <iostream>
 #include "ETSI_RRS_TxRxChainControlServices.h"
 
+using namespace std;
+
 ETSI_RRS_TxRxChainControlServices::ETSI_RRS_TxRxChainControlServices() {
-    std::cout << "Tx/Rx Chain Control Services created" << std::endl;
+    cout << "Tx/Rx Chain Control Services created" << endl;
 
 }
 
 ETSI_RRS_TxRxChainControlServices::~ETSI_RRS_TxRxChainControlServices() {
-    std::cout << "Tx/Rx Chain Control Services destroyed" << std::endl;
+    cout << "Tx/Rx Chain Control Services destroyed" << endl;
 
 }

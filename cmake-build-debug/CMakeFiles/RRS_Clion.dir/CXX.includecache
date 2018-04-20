@@ -51,6 +51,8 @@ ETSI_RRS_SpectrumControlServices.h
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_SpectrumControlServices.h
 iostream
 -
+string
+-
 
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.cpp
 iostream

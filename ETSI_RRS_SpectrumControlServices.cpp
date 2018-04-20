@@ -4,12 +4,14 @@
 
 #include "ETSI_RRS_SpectrumControlServices.h"
 
+using namespace std;
+
 ETSI_RRS_SpectrumControlServices::ETSI_RRS_SpectrumControlServices() {
-    std::cout << "Spectrum Control Services created" << std::endl;
+    cout << "Spectrum Control Services created" << endl;
 
 }
 
 ETSI_RRS_SpectrumControlServices::~ETSI_RRS_SpectrumControlServices() {
-    std::cout << "Spectrum Control Services destroyed" << std::endl;
+    cout << "Spectrum Control Services destroyed" << endl;
 
 }

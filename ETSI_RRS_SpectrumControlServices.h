@@ -7,8 +7,17 @@
 
 
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 class ETSI_RRS_SpectrumControlServices {
+
+private:
+    float centreFrequency;
+    float bandwidth;
+    float sampleRate;
+    string chainParameters;
 
 public:
     ETSI_RRS_SpectrumControlServices();
