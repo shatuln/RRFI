@@ -5,7 +5,7 @@
       <Option title="RRS_Clion" />
       <Option makefile_is_custom="1" />
       <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\uhd\;" />
       <Build>
       <Target title="all">
          <Option working_dir="/home/leoind/Dropbox/RRS_Clion/cmake-build-debug" />
@@ -114,11 +114,23 @@
       <Unit filename="/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.h">
          <Option target="RRS_Clion"/>
       </Unit>
+      <Unit filename="/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.cpp">
+         <Option target="RRS_Clion"/>
+      </Unit>
+      <Unit filename="/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h">
+         <Option target="RRS_Clion"/>
+      </Unit>
       <Unit filename="/home/leoind/Dropbox/RRS_Clion/main.cpp">
          <Option target="RRS_Clion"/>
       </Unit>
       <Unit filename="/home/leoind/Dropbox/RRS_Clion/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/leoind/Dropbox/RRS_Clion/../../../../usr/local/lib/cmake/uhd/UHDConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\uhd\" />
+      </Unit>
+      <Unit filename="/home/leoind/Dropbox/RRS_Clion/../../../../usr/local/lib/cmake/uhd/UHDConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\uhd\" />
       </Unit>
    </Project>
 </CodeBlocks_project_file>

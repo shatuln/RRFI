@@ -258,6 +258,33 @@ ETSI_RRS_TxRxChainControlServices.cpp.s:
 	$(MAKE) -f CMakeFiles/RRS_Clion.dir/build.make CMakeFiles/RRS_Clion.dir/ETSI_RRS_TxRxChainControlServices.cpp.s
 .PHONY : ETSI_RRS_TxRxChainControlServices.cpp.s
 
+ETSI_RRS_USRP_Device.o: ETSI_RRS_USRP_Device.cpp.o
+
+.PHONY : ETSI_RRS_USRP_Device.o
+
+# target to build an object file
+ETSI_RRS_USRP_Device.cpp.o:
+	$(MAKE) -f CMakeFiles/RRS_Clion.dir/build.make CMakeFiles/RRS_Clion.dir/ETSI_RRS_USRP_Device.cpp.o
+.PHONY : ETSI_RRS_USRP_Device.cpp.o
+
+ETSI_RRS_USRP_Device.i: ETSI_RRS_USRP_Device.cpp.i
+
+.PHONY : ETSI_RRS_USRP_Device.i
+
+# target to preprocess a source file
+ETSI_RRS_USRP_Device.cpp.i:
+	$(MAKE) -f CMakeFiles/RRS_Clion.dir/build.make CMakeFiles/RRS_Clion.dir/ETSI_RRS_USRP_Device.cpp.i
+.PHONY : ETSI_RRS_USRP_Device.cpp.i
+
+ETSI_RRS_USRP_Device.s: ETSI_RRS_USRP_Device.cpp.s
+
+.PHONY : ETSI_RRS_USRP_Device.s
+
+# target to generate assembly for a file
+ETSI_RRS_USRP_Device.cpp.s:
+	$(MAKE) -f CMakeFiles/RRS_Clion.dir/build.make CMakeFiles/RRS_Clion.dir/ETSI_RRS_USRP_Device.cpp.s
+.PHONY : ETSI_RRS_USRP_Device.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -309,6 +336,9 @@ help:
 	@echo "... ETSI_RRS_TxRxChainControlServices.o"
 	@echo "... ETSI_RRS_TxRxChainControlServices.i"
 	@echo "... ETSI_RRS_TxRxChainControlServices.s"
+	@echo "... ETSI_RRS_USRP_Device.o"
+	@echo "... ETSI_RRS_USRP_Device.i"
+	@echo "... ETSI_RRS_USRP_Device.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

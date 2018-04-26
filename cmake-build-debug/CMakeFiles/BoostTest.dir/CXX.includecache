@@ -6,39 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_AntennaManagementServices.cpp
-iostream
--
-ETSI_RRS_AntennaManagementServices.h
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_AntennaManagementServices.h
-ETSI_RRS_USRP_Device.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_AntennaManagementServices.h
-ETSI_RRS_USRP_Device.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_PowerControlServices.cpp
-iostream
--
-ETSI_RRS_PowerControlServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_PowerControlServices.h
 
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_PowerControlServices.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_RRFI.cpp
-uhd/usrp/multi_usrp.hpp
--
-ETSI_RRS_RRFI.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_RRFI.h
-ETSI_RRS_SpectrumControlServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_SpectrumControlServices.h
-ETSI_RRS_AntennaManagementServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_AntennaManagementServices.h
-ETSI_RRS_PowerControlServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_PowerControlServices.h
-ETSI_RRS_TxRxChainControlServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.h
 
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_RRFI.h
 ETSI_RRS_SpectrumControlServices.h
@@ -49,12 +19,6 @@ ETSI_RRS_PowerControlServices.h
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_PowerControlServices.h
 ETSI_RRS_TxRxChainControlServices.h
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.h
-ETSI_RRS_USRP_Device.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_SpectrumControlServices.cpp
-ETSI_RRS_SpectrumControlServices.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_SpectrumControlServices.h
 
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_SpectrumControlServices.h
 iostream
@@ -62,21 +26,7 @@ iostream
 string
 -
 
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.cpp
-iostream
--
-ETSI_RRS_TxRxChainControlServices.h
 /home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_TxRxChainControlServices.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.cpp
-ETSI_RRS_USRP_Device.h
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h
-
-/home/leoind/Dropbox/RRS_Clion/ETSI_RRS_USRP_Device.h
-uhd/usrp/multi_usrp.hpp
--
 
 /home/leoind/Dropbox/RRS_Clion/main.cpp
 iostream

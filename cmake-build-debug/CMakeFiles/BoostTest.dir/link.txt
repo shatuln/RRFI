@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/BoostTest.dir/main.cpp.o  -o BoostTest /usr/lib/i386-linux-gnu/libboost_system.so /usr/lib/i386-linux-gnu/libboost_filesystem.so 
