@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "ETSI_RRS_USRP_Device.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ private:
     string chainParameters;
 
 public:
-    ETSI_RRS_SpectrumControlServices();
+    ETSI_RRS_SpectrumControlServices(ETSI_RRS_USRP_Device&);
     ~ETSI_RRS_SpectrumControlServices();
 
 };

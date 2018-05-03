@@ -14,18 +14,18 @@
 
 using namespace std;
 
-class ETSI_RRS_RRFI : ETSI_RRS_USRP_Device {
+class ETSI_RRS_RRFI {
 
 private:
     ETSI_RRS_SpectrumControlServices *spectrumControlServices;
     ETSI_RRS_AntennaManagementServices *antennaManagementServices;
     ETSI_RRS_PowerControlServices *powerControlServices;
     ETSI_RRS_TxRxChainControlServices *txRxChainControlServices;
-    ETSI_RRS_USRP_Device *usrpDevice;
+    //ETSI_RRS_USRP_Device usrpDevice;
 
 
 public:
-    ETSI_RRS_RRFI();
+    ETSI_RRS_RRFI(ETSI_RRS_USRP_Device&);
     //Set parameters functions
     void set_txAntennaPort(string);
     void set_rxAntennaPort(string);

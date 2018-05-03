@@ -9,23 +9,28 @@
 using namespace std;
 using namespace boost;
 
-ETSI_RRS_AntennaManagementServices::ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device *actualusrpDevice) {
+ETSI_RRS_AntennaManagementServices::ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device &actualusrpDevice) {
 
-    usrpDevice = actualusrpDevice;
+    usrpDevice = &actualusrpDevice;
     cout << "Antenna Management Services created" << endl;
 }
 
 void ETSI_RRS_AntennaManagementServices::set_txAntennaPort(string actualTxAntennaPort) {
 
     this->txAntennaPort = actualTxAntennaPort;
-    cout << format("Setting RX Antenna: %s") % usrpDevice->ant << endl;
-    usrpDevice->usrp->set_rx_antenna(usrpDevice->ant);
-    cout << format("Actual RX Antenna: %s") % usrpDevice->usrp->get_rx_antenna() << endl << endl;
+    cout << format("Setting TX Antenna: %s") % this->txAntennaPort << endl;
+    usrpDevice->usrp->set_rx_antenna(this->txAntennaPort);
+    cout << format("Actual TX Antenna: %s") % usrpDevice->usrp->get_rx_antenna() << endl << endl;
 
 }
 
 string ETSI_RRS_AntennaManagementServices::get_txAntennaPort() {
-    return txAntennaPort;
+    if (this->txAntennaPort == usrpDevice->usrp->get_rx_antenna()) {
+        return txAntennaPort;
+    } else {
+        cout << "error" << endl;
+    }
+
 }
 
 void ETSI_RRS_AntennaManagementServices::set_rxAntennaPort(string actualRxAntennaPort) {

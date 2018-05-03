@@ -12,6 +12,7 @@ class ETSI_RRS_USRP_Device {
 
 public:
     ETSI_RRS_USRP_Device();
+    //TODO сделать перекодировку из номеров портов в стринги для платы
     string deviceArgs = "";
     string ref = "internal";
     string subdev = "A:A";

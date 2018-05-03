@@ -6,7 +6,7 @@
 
 using namespace std;
 
-ETSI_RRS_SpectrumControlServices::ETSI_RRS_SpectrumControlServices() {
+ETSI_RRS_SpectrumControlServices::ETSI_RRS_SpectrumControlServices(ETSI_RRS_USRP_Device &actualusrpdevice) {
     cout << "Spectrum Control Services created" << endl;
 
 }

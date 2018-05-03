@@ -18,10 +18,12 @@
 using namespace std;
 
 int main() {
-    ETSI_RRS_RRFI rrfi;
+    ETSI_RRS_USRP_Device usrpdevice;
+    cout << "..........." << endl;
+    ETSI_RRS_RRFI rrfi(usrpdevice);
 
-    rrfi.set_rxAntennaPort("TX:RX");
-    cout << endl << "Rx Antenna Port is: " << rrfi.get_rxAntennaPort() << endl << endl;
+    rrfi.set_txAntennaPort("TX/RX");
+    cout << endl << "Tx Antenna Port is: " << rrfi.get_txAntennaPort() << endl << endl;
 
     return 0;
 }

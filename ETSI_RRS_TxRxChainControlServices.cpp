@@ -7,7 +7,7 @@
 
 using namespace std;
 
-ETSI_RRS_TxRxChainControlServices::ETSI_RRS_TxRxChainControlServices() {
+ETSI_RRS_TxRxChainControlServices::ETSI_RRS_TxRxChainControlServices(ETSI_RRS_USRP_Device &actualusrpdevice) {
     cout << "Tx/Rx Chain Control Services created" << endl;
 
 }

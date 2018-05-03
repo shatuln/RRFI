@@ -16,7 +16,7 @@ private:
     string rxAntennaPort;
 
 public:
-    ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device *actualusrpDevice);
+    ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device&);
     ETSI_RRS_USRP_Device *usrpDevice;
     void set_txAntennaPort(string);
     string get_txAntennaPort();

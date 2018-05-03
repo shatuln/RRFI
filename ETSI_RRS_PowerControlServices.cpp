@@ -7,7 +7,7 @@
 
 using namespace std;
 
-ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices() {
+ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Device &actualusrpdevice) {
     cout << "Power Control Services created" << endl;
 
 }

@@ -12,13 +12,13 @@
 using namespace std;
 using namespace boost;
 
-ETSI_RRS_RRFI::ETSI_RRS_RRFI() {
-    spectrumControlServices = new ETSI_RRS_SpectrumControlServices();
-    antennaManagementServices = new ETSI_RRS_AntennaManagementServices(usrpDevice);
-    powerControlServices = new ETSI_RRS_PowerControlServices();
-    txRxChainControlServices = new ETSI_RRS_TxRxChainControlServices();
+ETSI_RRS_RRFI::ETSI_RRS_RRFI(ETSI_RRS_USRP_Device &actualusrpdevice) {
+    spectrumControlServices = new ETSI_RRS_SpectrumControlServices(actualusrpdevice);
+    antennaManagementServices = new ETSI_RRS_AntennaManagementServices(actualusrpdevice);
+    powerControlServices = new ETSI_RRS_PowerControlServices(actualusrpdevice);
+    txRxChainControlServices = new ETSI_RRS_TxRxChainControlServices(actualusrpdevice);
 
-    //usrpDevice->deviceArgs = "";
+    //usrpDevice = actualusrpdevice;
 }
 
 //Set parameters functions implementation
