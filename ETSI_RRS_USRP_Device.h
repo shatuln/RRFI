@@ -11,12 +11,12 @@ using namespace std;
 class ETSI_RRS_USRP_Device {
 
 public:
-    ETSI_RRS_USRP_Device();
-    //TODO сделать перекодировку из номеров портов в стринги для платы
+    ETSI_RRS_USRP_Device(); //first config of usrp device
     string deviceArgs = "";
     string ref = "internal";
     string subdev = "A:A";
-    string ant = "TX:RX";
+    string rx_ant = "TX:RX";
+    string tx_ant = "TX:RX";
     uhd::usrp::multi_usrp::sptr usrp;
 
 };

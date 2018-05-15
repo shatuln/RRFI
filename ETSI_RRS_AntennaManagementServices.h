@@ -14,14 +14,16 @@ class ETSI_RRS_AntennaManagementServices {
 private:
     string txAntennaPort;
     string rxAntennaPort;
+    ETSI_RRS_USRP_Device *usrpDevice;
 
 public:
     ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device&);
-    ETSI_RRS_USRP_Device *usrpDevice;
-    void set_txAntennaPort(string);
-    string get_txAntennaPort();
-    void set_rxAntennaPort(string);
-    string get_rxAntennaPort();
+    void set_txAntennaPort(int, int);
+    string get_txAntennaPort(int);
+    void set_rxAntennaPort(int, int);
+    string get_rxAntennaPort(int);
+    string decode_tx_port_num(int); //decode to string name of antenna
+    string decode_rx_port_num(int); //decode to string name of antenna
     ~ETSI_RRS_AntennaManagementServices();
 
 };

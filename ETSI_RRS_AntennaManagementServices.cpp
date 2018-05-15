@@ -15,17 +15,19 @@ ETSI_RRS_AntennaManagementServices::ETSI_RRS_AntennaManagementServices(ETSI_RRS_
     cout << "Antenna Management Services created" << endl;
 }
 
-void ETSI_RRS_AntennaManagementServices::set_txAntennaPort(string actualTxAntennaPort) {
+void ETSI_RRS_AntennaManagementServices::set_txAntennaPort(int actualTxAntennaPort, int channel) {
 
-    this->txAntennaPort = actualTxAntennaPort;
+    this->txAntennaPort = decode_tx_port_num(actualTxAntennaPort);
     cout << format("Setting TX Antenna: %s") % this->txAntennaPort << endl;
-    usrpDevice->usrp->set_rx_antenna(this->txAntennaPort);
-    cout << format("Actual TX Antenna: %s") % usrpDevice->usrp->get_rx_antenna() << endl << endl;
+    usrpDevice->tx_ant = this->txAntennaPort;
+    usrpDevice->usrp->set_tx_antenna(this->txAntennaPort, size_t(channel));
+    cout << format("Actual TX Antenna: %s, on channel %s") % usrpDevice->usrp->get_tx_antenna(size_t(channel)) % channel << endl << endl;
 
 }
 
-string ETSI_RRS_AntennaManagementServices::get_txAntennaPort() {
-    if (this->txAntennaPort == usrpDevice->usrp->get_rx_antenna()) {
+string ETSI_RRS_AntennaManagementServices::get_txAntennaPort(int channel) {
+
+    if (this->txAntennaPort == usrpDevice->usrp->get_tx_antenna(size_t(channel))) {
         return txAntennaPort;
     } else {
         cout << "error" << endl;
@@ -33,13 +35,40 @@ string ETSI_RRS_AntennaManagementServices::get_txAntennaPort() {
 
 }
 
-void ETSI_RRS_AntennaManagementServices::set_rxAntennaPort(string actualRxAntennaPort) {
+void ETSI_RRS_AntennaManagementServices::set_rxAntennaPort(int actualRxAntennaPort, int channel) {
 
-    this->rxAntennaPort = actualRxAntennaPort;
+    this->rxAntennaPort = decode_rx_port_num(actualRxAntennaPort);
+    cout << format("Setting RX Antenna: %s") % this->rxAntennaPort << endl;
+    usrpDevice->rx_ant = this->rxAntennaPort;
+    usrpDevice->usrp->set_rx_antenna(this->rxAntennaPort, size_t(channel));
+    cout << format("Actual RX Antenna: %s, on channel %s") % usrpDevice->usrp->get_rx_antenna(size_t(channel)) % channel << endl;
 }
 
-string ETSI_RRS_AntennaManagementServices::get_rxAntennaPort() {
-    return rxAntennaPort;
+string ETSI_RRS_AntennaManagementServices::get_rxAntennaPort(int channel) {
+
+    if (this->rxAntennaPort == usrpDevice->usrp->get_rx_antenna(size_t(channel))) {
+        return rxAntennaPort;
+    } else {
+        cout << "error" << endl;
+    }
+
+}
+
+string ETSI_RRS_AntennaManagementServices::decode_tx_port_num(int num) {
+
+    if (num == 0) {
+        return "TX/RX";
+    }
+}
+
+string ETSI_RRS_AntennaManagementServices::decode_rx_port_num(int num) {
+
+    if (num == 0) {
+        return "TX/RX";
+    }
+    if (num == 1) {
+        return "RX2";
+    }
 }
 
 

@@ -17,19 +17,17 @@ ETSI_RRS_RRFI::ETSI_RRS_RRFI(ETSI_RRS_USRP_Device &actualusrpdevice) {
     antennaManagementServices = new ETSI_RRS_AntennaManagementServices(actualusrpdevice);
     powerControlServices = new ETSI_RRS_PowerControlServices(actualusrpdevice);
     txRxChainControlServices = new ETSI_RRS_TxRxChainControlServices(actualusrpdevice);
-
-    //usrpDevice = actualusrpdevice;
 }
 
 //Set parameters functions implementation
 
-void ETSI_RRS_RRFI::set_txAntennaPort(string actualTxAntennaPort) {
-    antennaManagementServices->set_txAntennaPort(actualTxAntennaPort);
+void ETSI_RRS_RRFI::set_txAntennaPort(int actualTxAntennaPort, int channel) {
+    antennaManagementServices->set_txAntennaPort(actualTxAntennaPort, channel);
     return;
 }
 
-void ETSI_RRS_RRFI::set_rxAntennaPort(string actualRxAntennaPort) {
-    antennaManagementServices->set_rxAntennaPort(actualRxAntennaPort);
+void ETSI_RRS_RRFI::set_rxAntennaPort(int actualRxAntennaPort, int channel) {
+    antennaManagementServices->set_rxAntennaPort(actualRxAntennaPort, channel);
     return;
 }
 
@@ -47,12 +45,12 @@ void ETSI_RRS_RRFI::set_rxGain(float actualRxGain) {
 
 //Get parameters functions implementation
 
-string ETSI_RRS_RRFI::get_txAntennaPort() {
-    return antennaManagementServices->get_txAntennaPort();
+string ETSI_RRS_RRFI::get_txAntennaPort(int channel) {
+    return antennaManagementServices->get_txAntennaPort(channel);
 }
 
-string ETSI_RRS_RRFI::get_rxAntennaPort() {
-    return antennaManagementServices->get_rxAntennaPort();
+string ETSI_RRS_RRFI::get_rxAntennaPort(int channel) {
+    return antennaManagementServices->get_rxAntennaPort(channel);
 }
 
 float ETSI_RRS_RRFI::get_maxTxPowerLevel() {

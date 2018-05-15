@@ -22,8 +22,13 @@ int main() {
     cout << "..........." << endl;
     ETSI_RRS_RRFI rrfi(usrpdevice);
 
-    rrfi.set_txAntennaPort("TX/RX");
-    cout << endl << "Tx Antenna Port is: " << rrfi.get_txAntennaPort() << endl << endl;
+
+    rrfi.set_txAntennaPort(0, 1);
+    //cout << "Tx Antenna Port is: " << rrfi.get_txAntennaPort(0) << endl << endl;
+
+    rrfi.set_rxAntennaPort(0, 0);
+    //cout << "Rx Antenna Port is: " << rrfi.get_rxAntennaPort(0) << endl << endl;
+
 
     return 0;
 }

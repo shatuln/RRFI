@@ -27,15 +27,15 @@ private:
 public:
     ETSI_RRS_RRFI(ETSI_RRS_USRP_Device&);
     //Set parameters functions
-    void set_txAntennaPort(string);
-    void set_rxAntennaPort(string);
+    void set_txAntennaPort(int, int);
+    void set_rxAntennaPort(int, int);
     void set_maxTxPowerLevel(float);
     void set_txPowerLevel(float);
     void set_rxGain(float);
 
     //Get parameters functions
-    string get_txAntennaPort();
-    string get_rxAntennaPort();
+    string get_txAntennaPort(int);
+    string get_rxAntennaPort(int);
     float get_maxTxPowerLevel();
     float get_txPowerLevel();
     float get_rxGain();
