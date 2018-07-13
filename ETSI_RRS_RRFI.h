@@ -31,14 +31,18 @@ public:
     void set_rxAntennaPort(int, int);
     void set_maxTxPowerLevel(float);
     void set_txPowerLevel(float);
-    void set_rxGain(float);
+    void set_rxGain(double, int);
+    void set_rxCenterFrequency(double, int);
+    void set_txCenterFrequency(double, int);
+    void set_rxBandwidth(double, int);
+    void set_txBandwidth(double, int);
 
     //Get parameters functions
     string get_txAntennaPort(int);
     string get_rxAntennaPort(int);
     float get_maxTxPowerLevel();
     float get_txPowerLevel();
-    float get_rxGain();
+    double get_rxGain(int);
 
     ~ETSI_RRS_RRFI();
 

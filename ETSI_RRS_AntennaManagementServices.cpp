@@ -49,7 +49,7 @@ string ETSI_RRS_AntennaManagementServices::get_rxAntennaPort(int channel) {
     if (this->rxAntennaPort == usrpDevice->usrp->get_rx_antenna(size_t(channel))) {
         return rxAntennaPort;
     } else {
-        cout << "error" << endl;
+        cout << "Error" << endl;
     }
 
 }

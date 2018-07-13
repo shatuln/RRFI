@@ -7,7 +7,8 @@
 
 using namespace std;
 
-ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Device &actualusrpdevice) {
+ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Device &actualusrpDevice) {
+    usrpDevice = &actualusrpDevice;
     cout << "Power Control Services created" << endl;
 
 }
@@ -20,8 +21,15 @@ void ETSI_RRS_PowerControlServices::set_txPowerLevel(float actualTxPowerLevel) {
     this->txPowerLevel = actualTxPowerLevel;
 }
 
-void ETSI_RRS_PowerControlServices::set_rxGain(float actualRxGain) {
-    this->rxGain = actualRxGain;
+void ETSI_RRS_PowerControlServices::set_rxGain(double actualRxGain, int channel) {
+    if (usrpDevice->min_rx_gain <= actualRxGain <= usrpDevice->max_rx_gain) {
+        this->rxGain = actualRxGain;
+        usrpDevice->usrp->set_rx_gain(actualRxGain, size_t(channel));
+        usrpDevice->rx_gain = this->rxGain;
+    } else {
+        cout << "Error: rx_gain out in range" << endl;
+    }
+
 }
 
 float ETSI_RRS_PowerControlServices::get_maxTxPowerLevel() {
@@ -32,8 +40,12 @@ float ETSI_RRS_PowerControlServices::get_txPowerLevel() {
     return this->txPowerLevel;
 }
 
-float ETSI_RRS_PowerControlServices::get_rxGain() {
-    return this->rxGain;
+double ETSI_RRS_PowerControlServices::get_rxGain(int channel) {
+    if (this->rxGain == usrpDevice->usrp->get_rx_gain(size_t(channel))) {
+        return rxGain;
+    } else {
+        cout << "error" << endl;
+    }
 }
 
 ETSI_RRS_PowerControlServices::~ETSI_RRS_PowerControlServices() {

@@ -17,6 +17,19 @@ public:
     string subdev = "A:A";
     string rx_ant = "TX:RX";
     string tx_ant = "TX:RX";
+    double rx_gain = 0;
+    double max_rx_gain;
+    double min_rx_gain;
+    double max_tx_gain;
+    double min_tx_gain;
+    double max_rx_bandwidth;
+    double min_rx_bandwidth;
+    double max_tx_bandwidth;
+    double min_tx_bandwidth;
+    double max_rx_frequency;
+    double min_rx_frequency;
+    double max_tx_frequency;
+    double min_tx_frequency;
     uhd::usrp::multi_usrp::sptr usrp;
 
 };

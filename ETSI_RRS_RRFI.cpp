@@ -39,9 +39,27 @@ void ETSI_RRS_RRFI::set_txPowerLevel(float actualTxPowerLevel) {
     powerControlServices->set_txPowerLevel(actualTxPowerLevel);
 }
 
-void ETSI_RRS_RRFI::set_rxGain(float actualRxGain) {
-    powerControlServices->set_rxGain(actualRxGain);
+void ETSI_RRS_RRFI::set_rxGain(double actualRxGain, int channel) {
+    powerControlServices->set_rxGain(actualRxGain, channel);
 }
+
+void ETSI_RRS_RRFI::set_rxCenterFrequency(double actualRxCenterFrequency, int channel) {
+    spectrumControlServices->set_rxCenterFrequency(actualRxCenterFrequency, channel);
+}
+
+void ETSI_RRS_RRFI::set_txCenterFrequency(double actualTxCenterFrequency, int channel) {
+    spectrumControlServices->set_txCenterFrequency(actualTxCenterFrequency, channel);
+}
+
+void ETSI_RRS_RRFI::set_rxBandwidth(double actualRxBandwidth, int channel) {
+    spectrumControlServices->set_rxBandwidth(actualRxBandwidth, channel);
+}
+
+void ETSI_RRS_RRFI::set_txBandwidth(double actualTxBandwidth, int channel) {
+    spectrumControlServices->set_txBandwidth(actualTxBandwidth, channel);
+}
+
+
 
 //Get parameters functions implementation
 
@@ -61,8 +79,8 @@ float ETSI_RRS_RRFI::get_txPowerLevel() {
     return powerControlServices->get_txPowerLevel();
 }
 
-float ETSI_RRS_RRFI::get_rxGain() {
-    return powerControlServices->get_rxGain();
+double ETSI_RRS_RRFI::get_rxGain(int channel) {
+    return powerControlServices->get_rxGain(channel);
 }
 
 

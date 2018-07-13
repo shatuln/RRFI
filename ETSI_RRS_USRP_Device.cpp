@@ -1,5 +1,5 @@
 //
-// Created by leoind on 26.04.18.
+// Global USRP device parameters implementation
 //
 
 #include "ETSI_RRS_USRP_Device.h"
@@ -40,7 +40,25 @@ ETSI_RRS_USRP_Device::ETSI_RRS_USRP_Device() {
     cout << format("Actual RX Antenna: %s") % usrp->get_rx_antenna(size_t(0)) << ", on channel 0" << endl << endl;
 
     cout << "TX gain is: " << usrp->get_tx_gain_range().to_pp_string() << endl;
+    this->min_tx_gain = usrp->get_tx_gain_range().start();
+    this->max_tx_gain = usrp->get_tx_gain_range().stop();
     cout << "RX gain is: " << usrp->get_rx_gain_range().to_pp_string() << endl;
+    this->min_rx_gain = usrp->get_rx_gain_range().start();
+    this->max_rx_gain = usrp->get_rx_gain_range().stop();
+
+    cout << "TX bandwidth is" << usrp->get_tx_bandwidth_range().to_pp_string() << endl;
+    this->min_tx_bandwidth = usrp->get_tx_bandwidth_range().start();
+    this->max_tx_bandwidth = usrp->get_tx_bandwidth_range().stop();
+    cout << "RX bandwidth is" << usrp->get_rx_bandwidth_range().to_pp_string() << endl;
+    this->max_rx_bandwidth = usrp->get_rx_bandwidth_range().start();
+    this->max_rx_bandwidth = usrp->get_rx_bandwidth_range().stop();
+
+    cout << "TX frequency is" << usrp->get_tx_freq_range().to_pp_string() << endl;
+    this->min_tx_frequency = usrp->get_tx_bandwidth_range().start();
+    this->max_tx_frequency = usrp->get_tx_bandwidth_range().stop();
+    cout << "RX frequency is" << usrp->get_rx_freq_range().to_pp_string() << endl;
+    this->min_rx_frequency = usrp->get_rx_bandwidth_range().start();
+    this->max_rx_frequency = usrp->get_rx_bandwidth_range().stop();
 
     cout << "\e[1m" << "USRP device configuration done" << "\e[0m" << endl;
 
