@@ -48,36 +48,38 @@ void ETSI_RRS_SpectrumControlServices::set_txBandwidth(double actualtxBandwidth,
     }
 }
 
-void ETSI_RRS_SpectrumControlServices::set_rxSamplingRate() {
-
+void ETSI_RRS_SpectrumControlServices::set_rxSamplingRate(double actualrxRate, int channel) {
+    this->rx_SamplingRate = actualrxRate;
+    this->usrpDevice->usrp->set_rx_rate(actualrxRate, (size_t)channel);
 }
 
-void ETSI_RRS_SpectrumControlServices::set_txSamplingRate() {
-
+void ETSI_RRS_SpectrumControlServices::set_txSamplingRate(double actualtxRate, int channel) {
+    this->tx_SamplingRate = actualtxRate;
+    this->usrpDevice->usrp->set_tx_rate(actualtxRate, (size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_rxCenterFrequency() {
-
+double ETSI_RRS_SpectrumControlServices::get_rxCenterFrequency(int channel) {
+    return this->usrpDevice->usrp->get_rx_freq((size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_txCenterFrequency() {
-
+double ETSI_RRS_SpectrumControlServices::get_txCenterFrequency(int channel) {
+    return this->usrpDevice->usrp->get_tx_freq((size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_rxBandwidth() {
-
+double ETSI_RRS_SpectrumControlServices::get_rxBandwidth(int channel) {
+    return this->usrpDevice->usrp->get_rx_bandwidth((size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_txBandwidth() {
-
+double ETSI_RRS_SpectrumControlServices::get_txBandwidth(int channel) {
+    return this->usrpDevice->usrp->get_tx_bandwidth((size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_rxSamplingRate() {
-
+double ETSI_RRS_SpectrumControlServices::get_rxSamplingRate(int channel) {
+    return this->usrpDevice->usrp->get_rx_rate((size_t)channel);
 }
 
-double ETSI_RRS_SpectrumControlServices::get_txSamplingRate() {
-
+double ETSI_RRS_SpectrumControlServices::get_txSamplingRate(int channel) {
+    return this->usrpDevice->usrp->get_tx_rate((size_t)channel);
 }
 
 ETSI_RRS_SpectrumControlServices::~ETSI_RRS_SpectrumControlServices() {

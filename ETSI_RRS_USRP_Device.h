@@ -18,6 +18,7 @@ public:
     string rx_ant = "TX:RX";
     string tx_ant = "TX:RX";
     double rx_gain = 0;
+    double tx_gain = 0;
     double max_rx_gain;
     double min_rx_gain;
     double max_tx_gain;

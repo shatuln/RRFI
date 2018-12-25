@@ -26,23 +26,37 @@ private:
 
 public:
     ETSI_RRS_RRFI(ETSI_RRS_USRP_Device&);
-    //Set parameters functions
+        //Set parameters functions
+        //Antenna management Services
     void set_txAntennaPort(int, int);
     void set_rxAntennaPort(int, int);
+        //Power Control Services
     void set_maxTxPowerLevel(float);
-    void set_txPowerLevel(float);
+    void set_txPowerLevel(double, int);
     void set_rxGain(double, int);
+        //Spectrum Control Services
     void set_rxCenterFrequency(double, int);
     void set_txCenterFrequency(double, int);
     void set_rxBandwidth(double, int);
     void set_txBandwidth(double, int);
+    void set_rxSamplingRate(double, int);
+    void set_txSamplingRate(double, int);
 
-    //Get parameters functions
+        //Get parameters functions
+        // Antenna management Services
     string get_txAntennaPort(int);
     string get_rxAntennaPort(int);
+        //Power Control Services
     float get_maxTxPowerLevel();
-    float get_txPowerLevel();
+    double get_txPowerLevel(double, int);
     double get_rxGain(int);
+        //Spectrum Control Services
+    double get_rxCenterFrequency(int);
+    double get_txCenterFrequency(int);
+    double get_rxBandwidth(int);
+    double get_txBandwidth(int);
+    double get_rxSamplingRate(int);
+    double get_txSamplingRate(int);
 
     ~ETSI_RRS_RRFI();
 

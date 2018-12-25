@@ -35,8 +35,8 @@ void ETSI_RRS_RRFI::set_maxTxPowerLevel(float actualMaxTxPowerLevel) {
     powerControlServices->set_maxTxPowerLevel(actualMaxTxPowerLevel);
 }
 
-void ETSI_RRS_RRFI::set_txPowerLevel(float actualTxPowerLevel) {
-    powerControlServices->set_txPowerLevel(actualTxPowerLevel);
+void ETSI_RRS_RRFI::set_txPowerLevel(double actualTxPowerLevel, int channel) {
+    powerControlServices->set_txPowerLevel(actualTxPowerLevel, channel);
 }
 
 void ETSI_RRS_RRFI::set_rxGain(double actualRxGain, int channel) {
@@ -59,6 +59,13 @@ void ETSI_RRS_RRFI::set_txBandwidth(double actualTxBandwidth, int channel) {
     spectrumControlServices->set_txBandwidth(actualTxBandwidth, channel);
 }
 
+void ETSI_RRS_RRFI::set_rxSamplingRate(double actualRxRate, int channel) {
+    spectrumControlServices->set_rxSamplingRate(actualRxRate, channel);
+}
+
+void ETSI_RRS_RRFI::set_txSamplingRate(double actualTxRate, int channel) {
+    spectrumControlServices->set_txSamplingRate(actualTxRate, channel);
+}
 
 
 //Get parameters functions implementation
@@ -75,14 +82,37 @@ float ETSI_RRS_RRFI::get_maxTxPowerLevel() {
     return powerControlServices->get_maxTxPowerLevel();
 }
 
-float ETSI_RRS_RRFI::get_txPowerLevel() {
-    return powerControlServices->get_txPowerLevel();
+double ETSI_RRS_RRFI::get_txPowerLevel(double actualTxGain, int channel) {
+    return powerControlServices->get_txPowerLevel(actualTxGain, channel);
 }
 
 double ETSI_RRS_RRFI::get_rxGain(int channel) {
     return powerControlServices->get_rxGain(channel);
 }
 
+double ETSI_RRS_RRFI::get_rxCenterFrequency(int channel) {
+    return spectrumControlServices->get_rxCenterFrequency(channel);
+}
+
+double ETSI_RRS_RRFI::get_txCenterFrequency(int channel) {
+    return spectrumControlServices->get_txCenterFrequency(channel);
+}
+
+double ETSI_RRS_RRFI::get_rxBandwidth(int channel) {
+    return spectrumControlServices->get_rxBandwidth(channel);
+}
+
+double ETSI_RRS_RRFI::get_txBandwidth(int channel) {
+    return spectrumControlServices->get_txBandwidth(channel);
+}
+
+double ETSI_RRS_RRFI::get_rxSamplingRate(int channel) {
+    return spectrumControlServices->get_rxSamplingRate(channel);
+}
+
+double ETSI_RRS_RRFI::get_txSamplingRate(int channel) {
+    return spectrumControlServices->get_txSamplingRate(channel);
+}
 
 ETSI_RRS_RRFI::~ETSI_RRS_RRFI() {
     delete spectrumControlServices;
