@@ -13,45 +13,53 @@ ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Devic
 
 }
 
-void ETSI_RRS_PowerControlServices::set_maxTxPowerLevel(float actualMaxTxPowerLevel) {
+void ETSI_RRS_PowerControlServices::set_maxTxPowerLevel(double actualMaxTxPowerLevel) {
+    usrpDevice->max_tx_gain = actualMaxTxPowerLevel;
     this->maxTxPowerLevel = actualMaxTxPowerLevel;
+    cout << "Max gain: " << usrpDevice->max_tx_gain << endl;
 }
 
 void ETSI_RRS_PowerControlServices::set_txPowerLevel(double actualTxGain, int channel) {
-    if (usrpDevice->min_tx_gain <= actualTxGain <= usrpDevice->max_tx_gain) {
-        this->txPowerLevel = actualTxGain;
+    if (this->usrpDevice->min_tx_gain >= actualTxGain) {
         usrpDevice->usrp->set_tx_gain(actualTxGain, size_t(channel));
-        usrpDevice->tx_gain = this->txPowerLevel;
+        cout << "tx_powerlevel is less than min value, tx_powerlevel is min value" << endl;
     } else {
-        cout << "Error: tx_gain out in range" << endl;
+        if (this->usrpDevice->max_tx_gain <= actualTxGain) {
+            usrpDevice->usrp->set_tx_gain(actualTxGain, size_t(channel));
+            cout << "tx_powerlevel is larger than max value, tx_powerlevel is max value" << endl;
+        } else {
+            usrpDevice->usrp->set_tx_gain(actualTxGain, size_t(channel));
+            cout << "tx_powerlevel changed successful" << endl;
+        }
     }
-    //return this->txPowerLevel;
 }
 
 void ETSI_RRS_PowerControlServices::set_rxGain(double actualRxGain, int channel) {
-    if (usrpDevice->min_rx_gain <= actualRxGain <= usrpDevice->max_rx_gain) {
-        this->rxGain = actualRxGain;
+    if (this->usrpDevice->min_rx_gain >= actualRxGain) {
         usrpDevice->usrp->set_rx_gain(actualRxGain, size_t(channel));
-        usrpDevice->rx_gain = this->rxGain;
+        cout << "rx_gain is less than min value, rx_gain is min value" << endl;
     } else {
-        cout << "Error: rx_gain out in range" << endl;
+        if (this->usrpDevice->max_rx_gain <= actualRxGain) {
+            usrpDevice->usrp->set_rx_gain(actualRxGain, size_t(channel));
+            cout << "rx_gain is larger than max value, rx_gain is max value" << endl;
+        } else {
+            usrpDevice->usrp->set_rx_gain(actualRxGain, size_t(channel));
+            cout << "rx_gain changed successful" << endl;
+        }
     }
 
 }
 
-float ETSI_RRS_PowerControlServices::get_maxTxPowerLevel() {
+double ETSI_RRS_PowerControlServices::get_maxTxPowerLevel() {
     return this->maxTxPowerLevel;
 }
 
-double ETSI_RRS_PowerControlServices::get_txPowerLevel(double actualTxGain, int channel) {
+double ETSI_RRS_PowerControlServices::get_txPowerLevel(int channel) {
+    return usrpDevice->usrp->get_tx_gain(size_t(channel));
 }
 
 double ETSI_RRS_PowerControlServices::get_rxGain(int channel) {
-    if (this->rxGain == usrpDevice->usrp->get_rx_gain(size_t(channel))) {
-        return rxGain;
-    } else {
-        cout << "error" << endl;
-    }
+        return usrpDevice->usrp->get_rx_gain(size_t(channel));
 }
 
 ETSI_RRS_PowerControlServices::~ETSI_RRS_PowerControlServices() {

@@ -22,11 +22,17 @@ int main() {
     cout << "..........." << endl;
     ETSI_RRS_RRFI rrfi(usrpdevice);
 
+    rrfi.changeChannel(0);
+    rrfi.set_rxGain(90);
+    cout << rrfi.get_rxGain() << endl;
 
-    rrfi.set_txAntennaPort(0, 1);
+
+    rrfi.set_txAntennaPort(0);
     //cout << "Tx Antenna Port is: " << rrfi.get_txAntennaPort(0) << endl << endl;
+    rrfi.set_rxCenterFrequency(4.2);
+    cout << rrfi.get_rxCenterFrequency() << endl;
 
-    rrfi.set_rxAntennaPort(0, 0);
+    rrfi.set_rxAntennaPort(0);
     //cout << "Rx Antenna Port is: " << rrfi.get_rxAntennaPort(0) << endl << endl;
 
 

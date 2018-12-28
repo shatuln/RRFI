@@ -13,11 +13,18 @@ ETSI_RRS_SpectrumControlServices::ETSI_RRS_SpectrumControlServices(ETSI_RRS_USRP
 }
 
 void ETSI_RRS_SpectrumControlServices::set_rxCenterFrequency(double actualrxCenterFrequency, int channel) {
-    if (usrpDevice->min_rx_frequency < actualrxCenterFrequency < usrpDevice->max_rx_frequency) {
-        this->rx_CenterFrequency = actualrxCenterFrequency;
-        this->usrpDevice->usrp->set_rx_freq(uhd::tune_request_t(actualrxCenterFrequency), size_t(channel));
+
+    if (this->usrpDevice->min_rx_frequency >= actualrxCenterFrequency) {
+        usrpDevice->usrp->set_rx_freq(uhd::tune_request_t(actualrxCenterFrequency), size_t(channel));
+        cout << "rx_centerfreq is less than min value, rx_centerfreq is min value" << endl;
     } else {
-        cout << "Error: rx_Centerfrequency out of range" << endl;
+        if (this->usrpDevice->max_rx_frequency <= actualrxCenterFrequency) {
+            usrpDevice->usrp->set_rx_freq(uhd::tune_request_t(actualrxCenterFrequency), size_t(channel));
+            cout << "rx_centerfreq is larger than max value, rx_centerfreq is max value" << endl;
+        } else {
+            usrpDevice->usrp->set_rx_freq(uhd::tune_request_t(actualrxCenterFrequency), size_t(channel));
+            cout << "rx_centerfreq changed successful" << endl;
+        }
     }
 }
 

@@ -54,12 +54,46 @@ ETSI_RRS_USRP_Device::ETSI_RRS_USRP_Device() {
     this->max_rx_bandwidth = usrp->get_rx_bandwidth_range().stop();
 
     cout << "TX frequency is" << usrp->get_tx_freq_range().to_pp_string() << endl;
-    this->min_tx_frequency = usrp->get_tx_bandwidth_range().start();
-    this->max_tx_frequency = usrp->get_tx_bandwidth_range().stop();
+    this->min_tx_frequency = usrp->get_tx_freq_range().start();
+    this->max_tx_frequency = usrp->get_tx_freq_range().stop();
     cout << "RX frequency is" << usrp->get_rx_freq_range().to_pp_string() << endl;
-    this->min_rx_frequency = usrp->get_rx_bandwidth_range().start();
-    this->max_rx_frequency = usrp->get_rx_bandwidth_range().stop();
+    this->min_rx_frequency = usrp->get_rx_freq_range().start();
+    this->max_rx_frequency = usrp->get_rx_freq_range().stop();
 
     cout << "\e[1m" << "USRP device configuration done" << "\e[0m" << endl;
+
+}
+
+void ETSI_RRS_USRP_Device::changeChannel(size_t actualChannel) {
+    cout << "\e[1m" << "Channel changing for " << actualChannel << " channel" << "\e[0m" << endl;
+
+    usrp->set_tx_antenna("TX/RX", size_t(actualChannel));
+    cout << format("Actual TX Antenna: %s") % usrp->get_tx_antenna(actualChannel) << endl;
+
+    usrp->set_rx_antenna("RX2", actualChannel);
+    cout << format("Actual RX Antenna: %s") % usrp->get_rx_antenna(actualChannel) << endl << endl;
+
+    cout << "TX gain is: " << usrp->get_tx_gain_range(actualChannel).to_pp_string() << endl;
+    this->min_tx_gain = usrp->get_tx_gain_range(actualChannel).start();
+    this->max_tx_gain = usrp->get_tx_gain_range(actualChannel).stop();
+    cout << "RX gain is: " << usrp->get_rx_gain_range(actualChannel).to_pp_string() << endl;
+    this->min_rx_gain = usrp->get_rx_gain_range(actualChannel).start();
+    this->max_rx_gain = usrp->get_rx_gain_range(actualChannel).stop();
+
+    cout << "TX bandwidth is" << usrp->get_tx_bandwidth_range(actualChannel).to_pp_string() << endl;
+    this->min_tx_bandwidth = usrp->get_tx_bandwidth_range(actualChannel).start();
+    this->max_tx_bandwidth = usrp->get_tx_bandwidth_range(actualChannel).stop();
+    cout << "RX bandwidth is" << usrp->get_rx_bandwidth_range(actualChannel).to_pp_string() << endl;
+    this->max_rx_bandwidth = usrp->get_rx_bandwidth_range(actualChannel).start();
+    this->max_rx_bandwidth = usrp->get_rx_bandwidth_range(actualChannel).stop();
+
+    cout << "TX frequency is" << usrp->get_tx_freq_range(actualChannel).to_pp_string() << endl;
+    this->min_tx_frequency = usrp->get_tx_freq_range(actualChannel).start();
+    this->max_tx_frequency = usrp->get_tx_freq_range(actualChannel).stop();
+    cout << "RX frequency is" << usrp->get_rx_freq_range(actualChannel).to_pp_string() << endl;
+    this->min_rx_frequency = usrp->get_rx_freq_range(actualChannel).start();
+    this->max_rx_frequency = usrp->get_rx_freq_range(actualChannel).stop();
+
+    cout << "\e[1m" << "Channel changing done" << "\e[0m" << endl;
 
 }

@@ -11,7 +11,10 @@ using namespace std;
 class ETSI_RRS_USRP_Device {
 
 public:
+    //TODO Номер канала загнать в usrp
     ETSI_RRS_USRP_Device(); //first config of usrp device
+    void changeChannel(size_t);
+
     string deviceArgs = "";
     string ref = "internal";
     string subdev = "A:A";
