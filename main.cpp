@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <thread>
 #include "ETSI_RRS_RRFI.h"
 
 #include <uhd/utils/thread.hpp>
@@ -34,6 +35,9 @@ int main() {
 
     rrfi.set_rxAntennaPort(0);
     //cout << "Rx Antenna Port is: " << rrfi.get_rxAntennaPort(0) << endl << endl;
+
+    thread rx_thread(&ETSI_RRS_RRFI::rx_to_file, &rrfi, "", size_t(100), 10.0, 100);
+    rx_thread.join();
 
 
     return 0;

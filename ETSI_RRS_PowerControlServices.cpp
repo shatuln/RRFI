@@ -13,13 +13,13 @@ ETSI_RRS_PowerControlServices::ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Devic
 
 }
 
-void ETSI_RRS_PowerControlServices::set_maxTxPowerLevel(double actualMaxTxPowerLevel) {
+bool ETSI_RRS_PowerControlServices::set_maxTxPowerLevel(double actualMaxTxPowerLevel) {
     usrpDevice->max_tx_gain = actualMaxTxPowerLevel;
-    this->maxTxPowerLevel = actualMaxTxPowerLevel;
     cout << "Max gain: " << usrpDevice->max_tx_gain << endl;
+    return true;
 }
 
-void ETSI_RRS_PowerControlServices::set_txPowerLevel(double actualTxGain, int channel) {
+bool ETSI_RRS_PowerControlServices::set_txPowerLevel(double actualTxGain, int channel) {
     if (this->usrpDevice->min_tx_gain >= actualTxGain) {
         usrpDevice->usrp->set_tx_gain(actualTxGain, size_t(channel));
         cout << "tx_powerlevel is less than min value, tx_powerlevel is min value" << endl;
@@ -32,9 +32,10 @@ void ETSI_RRS_PowerControlServices::set_txPowerLevel(double actualTxGain, int ch
             cout << "tx_powerlevel changed successful" << endl;
         }
     }
+    return true;
 }
 
-void ETSI_RRS_PowerControlServices::set_rxGain(double actualRxGain, int channel) {
+bool ETSI_RRS_PowerControlServices::set_rxGain(double actualRxGain, int channel) {
     if (this->usrpDevice->min_rx_gain >= actualRxGain) {
         usrpDevice->usrp->set_rx_gain(actualRxGain, size_t(channel));
         cout << "rx_gain is less than min value, rx_gain is min value" << endl;
@@ -47,11 +48,11 @@ void ETSI_RRS_PowerControlServices::set_rxGain(double actualRxGain, int channel)
             cout << "rx_gain changed successful" << endl;
         }
     }
-
+    return true;
 }
 
 double ETSI_RRS_PowerControlServices::get_maxTxPowerLevel() {
-    return this->maxTxPowerLevel;
+    return usrpDevice->max_tx_gain;
 }
 
 double ETSI_RRS_PowerControlServices::get_txPowerLevel(int channel) {
@@ -59,7 +60,7 @@ double ETSI_RRS_PowerControlServices::get_txPowerLevel(int channel) {
 }
 
 double ETSI_RRS_PowerControlServices::get_rxGain(int channel) {
-        return usrpDevice->usrp->get_rx_gain(size_t(channel));
+    return usrpDevice->usrp->get_rx_gain(size_t(channel));
 }
 
 ETSI_RRS_PowerControlServices::~ETSI_RRS_PowerControlServices() {

@@ -14,6 +14,8 @@
 
 using namespace std;
 
+static bool stop_signal_called = false;
+
 class ETSI_RRS_RRFI {
 
 private:
@@ -36,16 +38,16 @@ public:
     void set_txAntennaPort(int);
     void set_rxAntennaPort(int);
         //Power Control Services
-    void set_maxTxPowerLevel(double);
-    void set_txPowerLevel(double);
-    void set_rxGain(double);
+    bool set_maxTxPowerLevel(double);
+    bool set_txPowerLevel(double);
+    bool set_rxGain(double);
         //Spectrum Control Services
-    void set_rxCenterFrequency(double);
-    void set_txCenterFrequency(double);
-    void set_rxBandwidth(double);
-    void set_txBandwidth(double);
-    void set_rxSamplingRate(double);
-    void set_txSamplingRate(double);
+    bool set_rxCenterFrequency(double);
+    bool set_txCenterFrequency(double);
+    bool set_rxBandwidth(double);
+    bool set_txBandwidth(double);
+    bool set_rxSamplingRate(double);
+    bool set_txSamplingRate(double);
 
         //Get parameters functions
         // Antenna management Services
@@ -62,6 +64,12 @@ public:
     double get_txBandwidth();
     double get_rxSamplingRate();
     double get_txSamplingRate();
+
+        //TX and RX from file functions
+    void tx_from_file(string, size_t);
+    void change_tx_stream_args(string, string); //fc64 - complex<double> fc32 - complex<float>
+    void change_rx_stream_args(string, string); //sc16 - complex<int16_t> sc8 - complex<int8_t>
+    void rx_to_file(string, size_t, float, int);
 
     ~ETSI_RRS_RRFI();
 

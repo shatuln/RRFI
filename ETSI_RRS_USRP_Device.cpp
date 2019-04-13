@@ -60,6 +60,16 @@ ETSI_RRS_USRP_Device::ETSI_RRS_USRP_Device() {
     this->min_rx_frequency = usrp->get_rx_freq_range().start();
     this->max_rx_frequency = usrp->get_rx_freq_range().stop();
 
+    tx_stream_args.cpu_format = "sc16";
+    tx_stream_args.otw_format = "sc16";
+    rx_stream_args.cpu_format = "sc16";
+    rx_stream_args.otw_format = "sc16";
+    tx_stream = usrp->get_tx_stream(tx_stream_args);
+    rx_stream = usrp->get_rx_stream(rx_stream_args);
+    tx_md.start_of_burst = false;
+    tx_md.end_of_burst = false;
+
+
     cout << "\e[1m" << "USRP device configuration done" << "\e[0m" << endl;
 
 }

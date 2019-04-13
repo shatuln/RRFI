@@ -12,16 +12,13 @@ using namespace std;
 class ETSI_RRS_PowerControlServices {
 
 private:
-    double maxTxPowerLevel;
-    double txPowerLevel;
-    double rxGain;
     ETSI_RRS_USRP_Device *usrpDevice;
 
 public:
     ETSI_RRS_PowerControlServices(ETSI_RRS_USRP_Device&);
-    void set_maxTxPowerLevel(double);
-    void set_txPowerLevel(double, int);
-    void set_rxGain(double, int);
+    bool set_maxTxPowerLevel(double);
+    bool set_txPowerLevel(double, int);
+    bool set_rxGain(double, int);
     double get_maxTxPowerLevel();
     double get_txPowerLevel(int);
     double get_rxGain(int);

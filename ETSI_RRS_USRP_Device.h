@@ -36,6 +36,17 @@ public:
     double min_tx_frequency;
     uhd::usrp::multi_usrp::sptr usrp;
 
+    uhd::tx_streamer::sptr tx_stream;
+    uhd::rx_streamer::sptr rx_stream;
+    uhd::tx_metadata_t tx_md;
+    uhd::rx_metadata_t rx_md;
+    uhd::stream_args_t tx_stream_args;
+    uhd::stream_args_t rx_stream_args;
+    size_t tx_samps_per_buff;
+    size_t rx_samps_per_buff;
+    string tx_filename;
+    string rx_filename;
+
 };
 
 
