@@ -14,7 +14,6 @@
 
 using namespace std;
 
-static bool stop_signal_called = false;
 
 class ETSI_RRS_RRFI {
 
