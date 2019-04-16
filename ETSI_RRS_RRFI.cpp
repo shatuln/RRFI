@@ -124,10 +124,16 @@ double ETSI_RRS_RRFI::get_txSamplingRate() {
 }
 
 void ETSI_RRS_RRFI::tx_from_file(string actualfilename, size_t samps_per_buff = 100) {
+    cout << "Sending file" << endl;
     usrpDevice->tx_samps_per_buff = samps_per_buff;
     usrpDevice->tx_filename = actualfilename;
     ifstream infile(usrpDevice->tx_filename.c_str(), ifstream::binary);
+    if (!infile) {
+        cout << "Cannot open file" << endl;
+        return;
+    }
     std::vector<short> buff(usrpDevice->tx_samps_per_buff);
+    usrpDevice->tx_md.end_of_burst = infile.eof();
 
     while(not usrpDevice->tx_md.end_of_burst and not stop_signal_called){
 
@@ -137,8 +143,10 @@ void ETSI_RRS_RRFI::tx_from_file(string actualfilename, size_t samps_per_buff = 
         usrpDevice->tx_md.end_of_burst = infile.eof();
 
         usrpDevice->tx_stream->send(&buff.front(), num_tx_samps, usrpDevice->tx_md);
+        cout << ".";
     }
     infile.close();
+    cout << "\e[1m" << "\nFile was sent successfully" << "\e[0m" << endl;
 }
 
 void ETSI_RRS_RRFI::change_tx_stream_args(string cpu_format, string otw_format) {

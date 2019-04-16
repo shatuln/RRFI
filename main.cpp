@@ -23,21 +23,32 @@ int main() {
     cout << "..........." << endl;
     ETSI_RRS_RRFI rrfi(usrpdevice);
 
+    //rrfi.set_txAntennaPort(0);
     rrfi.changeChannel(0);
-    rrfi.set_rxGain(90);
+    rrfi.set_txCenterFrequency(5e+07);
+    cout << rrfi.get_txCenterFrequency() << endl;
+    rrfi.set_txSamplingRate(1e+06);
+    cout << rrfi.get_txSamplingRate() << endl;
+    rrfi.set_txBandwidth(500000);
+    cout << rrfi.get_txBandwidth() << endl;
+    rrfi.set_txPowerLevel(76);
+    cout << rrfi.get_txPowerLevel() << endl;
+
+    rrfi.set_rxSamplingRate(1e+06);
+    cout << rrfi.get_rxSamplingRate() << endl;
+    rrfi.set_rxGain(76);
     cout << rrfi.get_rxGain() << endl;
-
-
-    rrfi.set_txAntennaPort(0);
-    //cout << "Tx Antenna Port is: " << rrfi.get_txAntennaPort(0) << endl << endl;
-    rrfi.set_rxCenterFrequency(4.2);
+    rrfi.set_rxBandwidth(500000);
+    cout << rrfi.get_rxBandwidth() << endl;
+    rrfi.set_rxCenterFrequency(5e+07);
     cout << rrfi.get_rxCenterFrequency() << endl;
 
-    rrfi.set_rxAntennaPort(0);
-    //cout << "Rx Antenna Port is: " << rrfi.get_rxAntennaPort(0) << endl << endl;
-
-    thread rx_thread(&ETSI_RRS_RRFI::rx_to_file, &rrfi, "", size_t(100), 10.0, 100);
+    thread rx_thread(&ETSI_RRS_RRFI::rx_to_file, &rrfi, "/home/leoind/Dropbox/RRS_Clion/rxtest.dat", size_t(100), 10.0, 1000);
+    rrfi.tx_from_file("/home/leoind/Dropbox/RRS_Clion/test", size_t(100));
     rx_thread.join();
+
+
+
 
 
     return 0;
