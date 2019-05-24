@@ -60,6 +60,13 @@ ETSI_RRS_USRP_Device::ETSI_RRS_USRP_Device() {
     this->min_rx_frequency = usrp->get_rx_freq_range().start();
     this->max_rx_frequency = usrp->get_rx_freq_range().stop();
 
+    cout << "TX Sapling rate is" << usrp->get_tx_rates().to_pp_string() << endl;
+    this->min_tx_rate = usrp->get_tx_rates().start();
+    this->max_tx_rate = usrp->get_tx_rates().stop();
+    cout << "RX Sapling rate is" << usrp->get_rx_rates().to_pp_string() << endl;
+    this->min_rx_rate = usrp->get_rx_rates().start();
+    this->max_rx_rate = usrp->get_rx_rates().stop();
+
     tx_stream_args.cpu_format = "sc16";
     tx_stream_args.otw_format = "sc16";
     rx_stream_args.cpu_format = "sc16";

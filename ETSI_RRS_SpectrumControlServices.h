@@ -32,7 +32,6 @@ public:
     bool set_txSamplingRate(double, int);
     double get_rxSamplingRate(int);
     double get_txSamplingRate(int);
-    //TODO chain param
     ~ETSI_RRS_SpectrumControlServices();
 
 

@@ -11,7 +11,6 @@ using namespace std;
 class ETSI_RRS_USRP_Device {
 
 public:
-    //TODO Номер канала загнать в usrp
     ETSI_RRS_USRP_Device(); //first config of usrp device
     void changeChannel(size_t);
 
@@ -22,18 +21,10 @@ public:
     string tx_ant = "TX:RX";
     double rx_gain = 0;
     double tx_gain = 0;
-    double max_rx_gain;
-    double min_rx_gain;
-    double max_tx_gain;
-    double min_tx_gain;
-    double max_rx_bandwidth;
-    double min_rx_bandwidth;
-    double max_tx_bandwidth;
-    double min_tx_bandwidth;
-    double max_rx_frequency;
-    double min_rx_frequency;
-    double max_tx_frequency;
-    double min_tx_frequency;
+    double max_rx_gain, min_rx_gain, max_tx_gain, min_tx_gain;
+    double max_rx_bandwidth, min_rx_bandwidth, max_tx_bandwidth, min_tx_bandwidth;
+    double max_rx_frequency, min_rx_frequency, max_tx_frequency, min_tx_frequency;
+    double min_tx_rate, max_tx_rate, min_rx_rate, max_rx_rate;
     uhd::usrp::multi_usrp::sptr usrp;
 
     uhd::tx_streamer::sptr tx_stream;
