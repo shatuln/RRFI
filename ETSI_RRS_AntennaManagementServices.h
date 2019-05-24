@@ -18,9 +18,9 @@ private:
 
 public:
     ETSI_RRS_AntennaManagementServices(ETSI_RRS_USRP_Device&);
-    void set_txAntennaPort(int, int);
+    bool set_txAntennaPort(int, int);
     string get_txAntennaPort(int);
-    void set_rxAntennaPort(int, int);
+    bool set_rxAntennaPort(int, int);
     string get_rxAntennaPort(int);
     string decode_tx_port_num(int); //decode to string name of antenna
     string decode_rx_port_num(int); //decode to string name of antenna

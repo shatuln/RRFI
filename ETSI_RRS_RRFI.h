@@ -34,8 +34,8 @@ public:
 
         //Set parameters functions
         //Antenna management Services
-    void set_txAntennaPort(int);
-    void set_rxAntennaPort(int);
+    bool set_txAntennaPort(int);
+    bool set_rxAntennaPort(int);
         //Power Control Services
     bool set_maxTxPowerLevel(double);
     bool set_txPowerLevel(double);

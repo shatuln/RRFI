@@ -28,14 +28,12 @@ void ETSI_RRS_RRFI::changeChannel(int actualChannel) {
 
 //Set parameters functions implementation
 
-void ETSI_RRS_RRFI::set_txAntennaPort(int actualTxAntennaPort) {
-    antennaManagementServices->set_txAntennaPort(actualTxAntennaPort, this->channel);
-    return;
+bool ETSI_RRS_RRFI::set_txAntennaPort(int actualTxAntennaPort) {
+    return antennaManagementServices->set_txAntennaPort(actualTxAntennaPort, this->channel);
 }
 
-void ETSI_RRS_RRFI::set_rxAntennaPort(int actualRxAntennaPort) {
-    antennaManagementServices->set_rxAntennaPort(actualRxAntennaPort, this->channel);
-    return;
+bool ETSI_RRS_RRFI::set_rxAntennaPort(int actualRxAntennaPort) {
+    return antennaManagementServices->set_rxAntennaPort(actualRxAntennaPort, this->channel);
 }
 
 bool ETSI_RRS_RRFI::set_maxTxPowerLevel(double actualMaxTxPowerLevel) {
