@@ -65,9 +65,11 @@ public:
     double get_txSamplingRate();
 
         //TX and RX from file functions
-    void tx_from_file(string, size_t);
+    bool tx_from_file(string, size_t);
+    bool tx_from_buff(std::vector<short>, size_t);
     void change_tx_stream_args(string, string); //fc64 - complex<double> fc32 - complex<float>
     void change_rx_stream_args(string, string); //sc16 - complex<int16_t> sc8 - complex<int8_t>
+    std::vector<short> rx_to_buff(size_t, float, int);
     void rx_to_file(string, size_t, float, int);
 
     ~ETSI_RRS_RRFI();

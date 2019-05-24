@@ -121,8 +121,12 @@ double ETSI_RRS_RRFI::get_txSamplingRate() {
     return spectrumControlServices->get_txSamplingRate(this->channel);
 }
 
-void ETSI_RRS_RRFI::tx_from_file(string actualfilename, size_t samps_per_buff = 100) {
-    txRxChainControlServices->tx_from_file(actualfilename, samps_per_buff);
+bool ETSI_RRS_RRFI::tx_from_file(string actualfilename, size_t samps_per_buff = 100) {
+    return txRxChainControlServices->tx_from_file(actualfilename, samps_per_buff);
+}
+
+bool ETSI_RRS_RRFI::tx_from_buff(std::vector<short> buff, size_t samps_per_buff = 100) {
+    return txRxChainControlServices->tx_from_buff(buff, samps_per_buff);
 }
 
 void ETSI_RRS_RRFI::change_tx_stream_args(string cpu_format, string otw_format) {
@@ -135,6 +139,10 @@ void ETSI_RRS_RRFI::change_rx_stream_args(string cpu_format, string otw_format) 
 
 void ETSI_RRS_RRFI::rx_to_file(string actualfilename, size_t samps_per_buff, float settling_time, int num_requested_samps = 0) {
     txRxChainControlServices->rx_to_file(actualfilename, samps_per_buff, settling_time, num_requested_samps);
+}
+
+std::vector<short> ETSI_RRS_RRFI::rx_to_buff(size_t samps_per_buff, float settling_time, int num_requested_samps = 0) {
+    txRxChainControlServices->rx_to_buff(samps_per_buff, settling_time, num_requested_samps);
 }
 
 ETSI_RRS_RRFI::~ETSI_RRS_RRFI() {
