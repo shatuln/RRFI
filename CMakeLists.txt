@@ -3,7 +3,7 @@ project(RRS_Clion)
 
 message(STATUS "start running cmake...")
 #Boost libraries finding
-find_package(Boost 1.58.0 COMPONENTS system filesystem REQUIRED)
+find_package(Boost 1.58.0 COMPONENTS system filesystem unit_test_framework REQUIRED)
 
 if(Boost_FOUND)
 
@@ -29,8 +29,9 @@ if(UHD_FOUND)
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+enable_testing()
 
-add_executable(RRS_Clion main.cpp ETSI_RRS_SpectrumControlServices.cpp ETSI_RRS_SpectrumControlServices.h ETSI_RRS_PowerControlServices.cpp ETSI_RRS_PowerControlServices.h ETSI_RRS_AntennaManagementServices.cpp ETSI_RRS_AntennaManagementServices.h ETSI_RRS_RRFI.cpp ETSI_RRS_RRFI.h ETSI_RRS_TxRxChainControlServices.cpp ETSI_RRS_TxRxChainControlServices.h ETSI_RRS_USRP_Device.cpp ETSI_RRS_USRP_Device.h)
+add_executable(RRS_Clion main.cpp ETSI_RRS_SpectrumControlServices.cpp ETSI_RRS_SpectrumControlServices.h ETSI_RRS_PowerControlServices.cpp ETSI_RRS_PowerControlServices.h ETSI_RRS_AntennaManagementServices.cpp ETSI_RRS_AntennaManagementServices.h ETSI_RRS_RRFI.cpp ETSI_RRS_RRFI.h ETSI_RRS_TxRxChainControlServices.cpp ETSI_RRS_TxRxChainControlServices.h ETSI_RRS_USRP_Device.cpp ETSI_RRS_USRP_Device.h ETSI_RRS_RRFITests.cpp ETSI_RRS_RRFITests.h)
 
 if(UHD_FOUND)
 
@@ -43,3 +44,5 @@ if(Boost_FOUND)
     target_link_libraries(RRS_Clion ${Boost_LIBRARIES})
 
 endif()
+
+add_test(NAME Test COMMAND ETSI_RRS_RRFITests)
