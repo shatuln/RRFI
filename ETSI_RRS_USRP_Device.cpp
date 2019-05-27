@@ -12,12 +12,22 @@ ETSI_RRS_USRP_Device::ETSI_RRS_USRP_Device() {
     cout << "\e[1m" << "USRP device configuration started..." << "\e[0m" << endl;
 
     //Creating connection with USRP device
-    cout << format("Creating the usrp device with: USB...") << endl;
-    usrp = uhd::usrp::multi_usrp::make(deviceArgs);
+    try {
+        cout << format("Creating the usrp device with: USB...") << endl;
+        usrp = uhd::usrp::multi_usrp::make(deviceArgs);
+    } catch (uhd::lookup_error) {
+        cout << "\e[1m" << "USRP radio device not found, please connect device correctly" << "\e[0m" << endl;
+        exit(0);
+    }
 
     // Lock mboard clocks
-    cout << format("Lock mboard clocks: %f") % ref << endl;
-    usrp->set_clock_source(ref);
+    try {
+        cout << format("Lock mboard clocks: %f") % ref << endl;
+        usrp->set_clock_source(ref);
+    } catch (uhd::value_error) {
+        cout << "\e[1m" << "Source for clock is invalid, please check clock_source option" << "\e[0m" << endl;
+        exit(0);
+    }
 
     //always select the subdevice first, the channel mapping affects the other settings
     cout << format("Subdevice set to: %f") % subdev << endl;
@@ -110,6 +120,13 @@ void ETSI_RRS_USRP_Device::changeChannel(size_t actualChannel) {
     cout << "RX frequency is" << usrp->get_rx_freq_range(actualChannel).to_pp_string() << endl;
     this->min_rx_frequency = usrp->get_rx_freq_range(actualChannel).start();
     this->max_rx_frequency = usrp->get_rx_freq_range(actualChannel).stop();
+
+    cout << "TX Sapling rate is" << usrp->get_tx_rates().to_pp_string() << endl;
+    this->min_tx_rate = usrp->get_tx_rates().start();
+    this->max_tx_rate = usrp->get_tx_rates().stop();
+    cout << "RX Sapling rate is" << usrp->get_rx_rates().to_pp_string() << endl;
+    this->min_rx_rate = usrp->get_rx_rates().start();
+    this->max_rx_rate = usrp->get_rx_rates().stop();
 
     cout << "\e[1m" << "Channel changing done" << "\e[0m" << endl;
 
