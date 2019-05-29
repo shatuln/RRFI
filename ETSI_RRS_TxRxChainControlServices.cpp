@@ -13,7 +13,6 @@ void sig_int_handler(int){stop_signal_called = true;}
 
 ETSI_RRS_TxRxChainControlServices::ETSI_RRS_TxRxChainControlServices(ETSI_RRS_USRP_Device &actualusrpdevice) {
     usrpDevice = &actualusrpdevice;
-    cout << "Tx/Rx Chain Control Services created" << endl;
 }
 
 bool ETSI_RRS_TxRxChainControlServices::tx_from_buff(std::vector<short> buff, size_t samps_per_buff) {
@@ -165,6 +164,5 @@ void ETSI_RRS_TxRxChainControlServices::rx_to_file(string actualfilename, size_t
 }
 
 ETSI_RRS_TxRxChainControlServices::~ETSI_RRS_TxRxChainControlServices() {
-    cout << "Tx/Rx Chain Control Services destroyed" << endl;
 
 }

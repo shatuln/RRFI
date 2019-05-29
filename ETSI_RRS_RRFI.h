@@ -23,7 +23,7 @@ private:
     ETSI_RRS_PowerControlServices *powerControlServices;
     ETSI_RRS_TxRxChainControlServices *txRxChainControlServices;
     ETSI_RRS_USRP_Device* usrpDevice;
-    int channel;
+    int channel = 0;
     //ETSI_RRS_USRP_Device usrpDevice;
 
 

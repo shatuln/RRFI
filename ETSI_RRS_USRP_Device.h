@@ -16,7 +16,7 @@ public:
 
     string deviceArgs = "";
     string ref = "internal";
-    string subdev = "A:A";
+    string subdev = "A:B";
     string rx_ant = "TX:RX";
     string tx_ant = "TX:RX";
     double rx_gain = 0;

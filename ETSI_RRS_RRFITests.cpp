@@ -2,13 +2,12 @@
 // Created by leoind on 25.05.19.
 //
 
-#include "ETSI_RRS_RRFITests.h"
-#include "ETSI_RRS_USRP_Device.h"
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MODULE RRFI Tests
 #include <boost/test/unit_test.hpp>
-
-ETSI_RRS_RRFITests::ETSI_RRS_RRFITests() {
-
-}
+#include "ETSI_RRS_USRP_Device.h"
+#include "ETSI_RRS_RRFI.h"
+#include <fstream>
 
 struct TestFixture {
     ETSI_RRS_USRP_Device usrpDevice;
@@ -143,5 +142,30 @@ BOOST_FIXTURE_TEST_SUITE(TestSpectrumControlServices, TestFixture)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-ETSI_RRS_RRFITests::~ETSI_RRS_RRFITests() {
+BOOST_FIXTURE_TEST_CASE(Set_WIFI_Parameters, TestFixture) {
+    const double freq = 2400000000;
+    const double bw = 20000000;
+    const double sr = 2000000;
+    const double gain = 60;
+
+    BOOST_CHECK_EQUAL(rrfi.set_txAntennaPort(0), true);
+    BOOST_CHECK_EQUAL(rrfi.set_txCenterFrequency(freq), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txCenterFrequency(), freq);
+    BOOST_CHECK_EQUAL(rrfi.set_txBandwidth(bw), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txBandwidth(), bw);
+    BOOST_CHECK_EQUAL(rrfi.set_txSamplingRate(sr), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txSamplingRate(), sr);
+    BOOST_CHECK_EQUAL(rrfi.set_txPowerLevel(gain), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txPowerLevel(), gain);
+
+    BOOST_CHECK_EQUAL(rrfi.set_rxAntennaPort(1), true);
+    BOOST_CHECK_EQUAL(rrfi.set_rxCenterFrequency(freq), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxCenterFrequency(), freq);
+    BOOST_CHECK_EQUAL(rrfi.set_rxBandwidth(bw), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxBandwidth(), bw);
+    BOOST_CHECK_EQUAL(rrfi.set_rxSamplingRate(sr), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxSamplingRate(), sr);
+    BOOST_CHECK_EQUAL(rrfi.set_rxGain(gain), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxGain(), gain);
+
 }
