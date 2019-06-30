@@ -169,3 +169,55 @@ BOOST_FIXTURE_TEST_CASE(Set_WIFI_Parameters, TestFixture) {
     BOOST_CHECK_EQUAL(rrfi.get_rxGain(), gain);
 
 }
+
+BOOST_FIXTURE_TEST_CASE(Set_BlueTooth_Parameters, TestFixture) {
+    const double freq = 2480000000;
+    const double bw = 35000000;
+    const double sr = 2000000;
+    const double gain = 50;
+
+    BOOST_CHECK_EQUAL(rrfi.set_txAntennaPort(0), true);
+    BOOST_CHECK_EQUAL(rrfi.set_txCenterFrequency(freq), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txCenterFrequency(), freq);
+    BOOST_CHECK_EQUAL(rrfi.set_txBandwidth(bw), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txBandwidth(), bw);
+    BOOST_CHECK_EQUAL(rrfi.set_txSamplingRate(sr), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txSamplingRate(), sr);
+    BOOST_CHECK_EQUAL(rrfi.set_txPowerLevel(gain), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txPowerLevel(), gain);
+
+    BOOST_CHECK_EQUAL(rrfi.set_rxAntennaPort(1), true);
+    BOOST_CHECK_EQUAL(rrfi.set_rxCenterFrequency(freq), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxCenterFrequency(), freq);
+    BOOST_CHECK_EQUAL(rrfi.set_rxBandwidth(bw), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxBandwidth(), bw);
+    BOOST_CHECK_EQUAL(rrfi.set_rxSamplingRate(sr), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxSamplingRate(), sr);
+    BOOST_CHECK_EQUAL(rrfi.set_rxGain(gain), true);
+    BOOST_CHECK_EQUAL(rrfi.get_rxGain(), gain);
+
+}
+
+BOOST_FIXTURE_TEST_CASE(Tx_Test, TestFixture) {
+    const double freq = 2480000000;
+    const double bw = 35000000;
+    const double sr = 2000000;
+    const double gain = 50;
+
+    BOOST_CHECK_EQUAL(rrfi.set_txAntennaPort(0), true);
+    BOOST_CHECK_EQUAL(rrfi.set_txCenterFrequency(freq), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txCenterFrequency(), freq);
+    BOOST_CHECK_EQUAL(rrfi.set_txBandwidth(bw), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txBandwidth(), bw);
+    BOOST_CHECK_EQUAL(rrfi.set_txSamplingRate(sr), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txSamplingRate(), sr);
+    BOOST_CHECK_EQUAL(rrfi.set_txPowerLevel(gain), true);
+    BOOST_CHECK_EQUAL(rrfi.get_txPowerLevel(), gain);
+
+    const std::vector<short> buff(5000);
+    for (int i = 0; i < 100; i++) {
+        BOOST_CHECK_EQUAL(rrfi.tx_from_buff(buff, 50), true);
+    }
+
+    BOOST_CHECK_EQUAL(rrfi.tx_from_file("/home/leoind/Dropbox/RRS_Clion/pic.png", 100), true);
+}

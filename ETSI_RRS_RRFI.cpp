@@ -140,7 +140,7 @@ void ETSI_RRS_RRFI::rx_to_file(string actualfilename, size_t samps_per_buff, flo
 }
 
 std::vector<short> ETSI_RRS_RRFI::rx_to_buff(size_t samps_per_buff, float settling_time, int num_requested_samps = 0) {
-    txRxChainControlServices->rx_to_buff(samps_per_buff, settling_time, num_requested_samps);
+    return txRxChainControlServices->rx_to_buff(samps_per_buff, settling_time, num_requested_samps);
 }
 
 ETSI_RRS_RRFI::~ETSI_RRS_RRFI() {
